@@ -1,35 +1,68 @@
-function validate() {
-    const numberElement = document.querySelector("#first-input");
-    const emailElement = document.querySelector("#second-input");
-    const number = document.querySelector("#first-input").value;
-    const email = document.querySelector("#second-input").value;
-
-    if (!number) {
-        console.log("invalid number");
-        numberElement.classList.add("is-invalid");
+function validateData(form){
+    var fname = form.fname.value;
+    var lname = form.lname.value;
+    var tnumber = form.tnumber.value;
+    
+    
+     
+     if (fname === "") {
+        console.log("All fields must be filled ");
+        document.getElementById('fname').focus();
         return false;
-    }
-
-    if (!email) {
-        console.log("invalid email");
-        emailElement.classList.add("is-invalid");
+      }
+      if(lname===""){
+       console.log("All fields must be filled ");
+        document.getElementById('lname').focus();
         return false;
-    }
-
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const validEmail = re.test(String(email).toLowerCase());
-    console.log(validEmail);
-    if (!validEmail) {
-        console.log("invalid email");
-        emailElement.classList.add("is-invalid");
+      }
+      if(tnumber===""){
+        console.log("All fields must be filled ");
+        document.getElementById('tnumber').focus();
         return false;
+      }
+     if(nameTest(fname)===false){
+      console.log("Not valid first name");
+      document.getElementById('fname').focus();
+      return false;
+      
+     }
+     if(nameTest(lname)===false){
+     console.log("Not valid last name");
+     document.getElementById('lname').focus();
+     return false;
+     
+     }
+    if(allNumeric(tnumber)===false){
+     console.log("Not valid telephone number");
+     document.getElementById('tnumber').focus();
+     return false;
+    
+    
     }
-
-    console.log("valid");
-
-    numberElement.classList.remove("is-invalid");
-    emailElement.classList.remove("is-invalid");
-
-
+    console.log("Correct");
     return true;
-}
+    
+    
+    }
+    
+    
+    
+    function nameTest(name){
+    var regName = /^[a-zA-Z]+$/;
+    if(regName.test(name)){
+       return true;
+    }else{
+       return false;
+    }
+    }
+    
+    function allNumeric(number){
+    var numberReg = /^[0-9]+$/;
+          if(number.match(numberReg))
+          {
+          return true;
+    }else{
+    return false;
+    }
+    
+    }

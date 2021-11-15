@@ -1,19 +1,19 @@
-function convert() {
+function ConvertToCelsius(form){
 
-    const celsiusElement = document.querySelector("#first-input");
-    const fahrenheitElement = document.querySelector("#second-input");
-    const celsius = parseInt(celsiusElement.value);
-    const fahrenheit = parseInt(fahrenheitElement.value);
-    console.log(celsius, fahrenheit);
-
-    switch (celsius || fahrenheit) {
-        case celsius:
-            fahrenheitElement.value = (celsius * 9 / 5) + 32;
-            break;
-        case fahrenheit:
-            celsiusElement.value = (fahrenheit - 32) * (5 / 9);
-            break;
-        default:
-            console.log("Two empty inputs")
-    }
-}
+  var fValue = form.input.value;
+    var fToCel = (fValue - 32) * 5 / 9;
+    var message = fValue+'\xB0F is ' + fToCel + '\xB0C.';
+      console.log(message);
+      document.write (message);
+    document.body.style.backgroundColor = "white";
+  
+  }
+  
+  function ConvertToFahrenheit(form){
+  var cValue = form.input.value;
+    var cToFahr = cValue * 9 / 5 + 32;
+    var message = cValue+'\xB0C is ' + cToFahr + ' \xB0F.';
+      console.log(message);
+       document.write (message);
+         document.body.style.backgroundColor = "white";
+  }
