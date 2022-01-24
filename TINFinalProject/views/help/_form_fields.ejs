@@ -1,0 +1,60 @@
+<%if (locals.loggedUser) { %>
+<div class="register__row3">
+  <label id="helpLbl">Volunteer Name:</label>
+  <input
+    type="text"
+    class="register__input"
+    name="volunteerName"
+    placeholder="<%=loggedUser.firstName%> <%=loggedUser.lastName%> "
+    disabled
+  />
+
+  <input type="hidden" name="volunteer" value="<%=loggedUser.phone %>" />
+</div>
+
+<div class="register__row3">
+  <label id="helpLbl">HelpSeeker Name:</label>
+  <input
+    type="text"
+    class="register__input"
+    name="helpSeekerName"
+    placeholder="<%=user.name.first%>  "
+    disabled
+  />
+  <input
+    type="hidden"
+    name="helpSeeker"
+    id="helpSeeker"
+    value="<%=user.id %>"
+  />
+</div>
+<div class="register__row3">
+  <label id="helpLbl">What <%= user.name.first %> needs:</label>
+  <input
+    type="text"
+    class="register__input"
+    name="seekerDesc"
+    placeholder="<%=seeker.helpDesired %> "
+    disabled
+  />
+</div>
+
+<div class="register__row3">
+  <label id="helpLbl"
+    >When would you like to help <%= user.name.first %> ?</label
+  >
+  <input
+    type="date"
+    class="register__input"
+    name="date"
+    value="<%= req.body.date %>"
+  />
+</div>
+
+<div class="register__row4">
+  <label id="helpLbl">Help Description</label>
+  <textarea class="register__input" name="description" id="txtArea">
+<%= req.body.description %></textarea
+  >
+</div>
+<% } %>
